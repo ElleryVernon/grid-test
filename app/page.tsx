@@ -1,95 +1,187 @@
 "use client";
 
 import React, { useState } from "react";
-import { Responsive, WidthProvider } from "react-grid-layout";
-
-const ResponsiveGridLayout = WidthProvider(Responsive);
+import GridLayout, { Layout } from "react-grid-layout";
 
 const MyResponsiveGrid = () => {
+	const [currentLayout, setCurrentLayout] = useState<Layout[] | null>(null);
+
+	const handleLayoutChange = (layout: Layout[]) => {
+		setCurrentLayout(() => layout);
+		console.log(layout);
+	};
+
 	const layouts = {
 		lg: [
-			{ i: "1", x: 0, y: 0, w: 2, h: 2 },
-			{ i: "2", x: 2, y: 0, w: 2, h: 2 },
-			{ i: "3", x: 4, y: 0, w: 4, h: 2 },
-			{ i: "4", x: 4, y: 2, w: 5, h: 1 },
-			{ i: "5", x: 4, y: 0, w: 3, h: 2 },
-		],
-		md: [
-			{ i: "1", x: 0, y: 0, w: 2, h: 2 },
-			{ i: "2", x: 2, y: 0, w: 2, h: 2 },
-			{ i: "3", x: 4, y: 0, w: 4, h: 2 },
-			{ i: "4", x: 4, y: 2, w: 5, h: 1 },
-			{ i: "5", x: 4, y: 0, w: 3, h: 2 },
+			{ i: "1", x: 0, y: 0, w: 1, h: 1 },
+			{ i: "2", x: 1, y: 0, w: 1, h: 1 },
+			{ i: "3", x: 2, y: 0, w: 1, h: 1 },
+			{ i: "4", x: 3, y: 2, w: 1, h: 1 },
+			{ i: "5", x: 4, y: 0, w: 1, h: 1 },
 		],
 		sm: [
-			{ i: "1", x: 0, y: 0, w: 2, h: 2 },
-			{ i: "2", x: 2, y: 0, w: 2, h: 2 },
-			{ i: "3", x: 4, y: 0, w: 4, h: 2 },
-			{ i: "4", x: 4, y: 2, w: 5, h: 1 },
-			{ i: "5", x: 4, y: 0, w: 3, h: 2 },
-		],
-		xs: [
-			{ i: "1", x: 0, y: 0, w: 2, h: 2 },
-			{ i: "2", x: 2, y: 0, w: 2, h: 2 },
-			{ i: "3", x: 4, y: 0, w: 4, h: 2 },
-			{ i: "4", x: 4, y: 2, w: 5, h: 1 },
-			{ i: "5", x: 4, y: 0, w: 3, h: 2 },
-		],
-		xxs: [
-			{ i: "1", x: 0, y: 0, w: 2, h: 2 },
-			{ i: "2", x: 2, y: 0, w: 2, h: 2 },
-			{ i: "3", x: 4, y: 0, w: 4, h: 2 },
-			{ i: "4", x: 4, y: 2, w: 5, h: 1 },
-			{ i: "5", x: 4, y: 0, w: 3, h: 2 },
+			{ i: "1", x: 0, y: 0, w: 1, h: 1 },
+			{ i: "2", x: 2, y: 0, w: 1, h: 1 },
+			{ i: "3", x: 4, y: 0, w: 1, h: 1 },
+			{ i: "4", x: 4, y: 2, w: 1, h: 1 },
+			{ i: "5", x: 4, y: 0, w: 1, h: 1 },
 		],
 	};
 
 	return (
-		<ResponsiveGridLayout
-			className="layout"
-			layouts={layouts}
-			breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-			cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
-			onDragStart={(layout, oldItem, newItem, placeholder, e, element) => {
-				element.classList.remove("notDragging");
-				element.classList.add("dragging");
-			}}
-			onDragStop={(layout, oldItem, newItem, placeholder, e, element) => {
-				element.classList.remove("dragging");
-				element.classList.add("notDragging");
-			}}
-		>
-			<div
-				key="1"
-				className={`border rounded-2xl p-4 bg-white shdow  border-neutral-200 cursor-pointer flex items-center justify-center text-xl font-semibold`}
-			>
-				1
-			</div>
-			<div
-				key="2"
-				className={`border rounded-2xl p-4 bg-white border-neutral-200  cursor-pointer flex items-center justify-center text-xl font-semibold`}
-			>
-				2
-			</div>
-			<div
-				key="3"
-				className={`border rounded-2xl p-4 bg-white border-neutral-200  cursor-pointer flex items-center justify-center text-xl font-semibold`}
-			>
-				3
-			</div>
-			<div
-				key="4"
-				className={`border rounded-2xl p-4 bg-white border-neutral-200  cursor-pointer flex items-center justify-center text-xl font-semibold`}
-			>
-				4
-			</div>
-			<div
-				key="5"
-				className={`border rounded-2xl p-4 bg-white border-neutral-200  cursor-pointer flex items-center justify-center text-xl font-semibold`}
-			>
-				5
-			</div>
-		</ResponsiveGridLayout>
+		// <GridLayout
+		// 	className="layout"
+		// 	layouts={currentLayout || layouts}
+		// 	breakpoints={{ sm: 1200, xxs: 0 }}
+		// 	cols={{ sm: 4, xxs: 2 }}
+		// 	onLayoutChange={handleLayoutChange}
+		// 	margin={[32, 32]}
+		// 	autoSize={true}
+		// 	width={128}
+		// 	containerPadding={[64, 64]}
+		// >
+		// 	<div
+		// 		key="1"
+		// 		className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+		// 	>
+		// 		1
+		// 	</div>
+		// 	<div
+		// 		key="2"
+		// 		className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1]  cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+		// 	>
+		// 		2
+		// 	</div>
+		// 	<div
+		// 		key="3"
+		// 		className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1]   cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+		// 	>
+		// 		3
+		// 	</div>
+		// 	<div
+		// 		key="4"
+		// 		className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1]   cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+		// 	>
+		// 		4
+		// 	</div>
+		// 	<div
+		// 		key="5"
+		// 		className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1]   cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+		// 	>
+		// 		5
+		// 	</div>
+		// </GridLayout>
+		<>
+			<main className="hidden desktop:flex">
+				<GridLayout
+					className="layout"
+					cols={4}
+					rowHeight={30}
+					width={820}
+					margin={[32, 32]}
+					onLayoutChange={handleLayoutChange}
+				>
+					<div
+						key="a"
+						data-grid={{ x: 0, y: 0, w: 1, h: 3 }}
+						className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+					>
+						A
+					</div>
+					<div
+						key="b"
+						data-grid={{ x: 1, y: 0, w: 2, h: 1.5 }}
+						className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+					>
+						B
+					</div>
+					<div
+						key="c"
+						data-grid={{ x: 1, y: 1.5, w: 2, h: 3 }}
+						className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+					>
+						C
+					</div>
+					<div
+						key="d"
+						data-grid={{ x: 0, y: 3, w: 1, h: 6 }}
+						className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+					>
+						D
+					</div>
+					<div
+						key="e"
+						data-grid={{ x: 1, y: 4.5, w: 2, h: 6 }}
+						className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+					>
+						E
+					</div>
+					<div
+						key="f"
+						data-grid={{ x: 0, y: 10.5, w: 4, h: 1.5 }}
+						className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+					>
+						Section Title
+					</div>
+				</GridLayout>
+			</main>
+			<main className="flex desktop:hidden w-full justify-center">
+				<div className="w-[380px]">
+					<GridLayout
+						className="layout"
+						cols={2}
+						rowHeight={30}
+						width={380}
+						margin={[32, 32]}
+						containerPadding={[24, 24]}
+						onLayoutChange={handleLayoutChange}
+					>
+						<div
+							key="a"
+							data-grid={{ x: 0, y: 0, w: 1, h: 3 }}
+							className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+						>
+							A
+						</div>
+						<div
+							key="b"
+							data-grid={{ x: 1, y: 0, w: 2, h: 1.5 }}
+							className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+						>
+							B
+						</div>
+						<div
+							key="c"
+							data-grid={{ x: 1, y: 1.5, w: 2, h: 3 }}
+							className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+						>
+							C
+						</div>
+						<div
+							key="d"
+							data-grid={{ x: 0, y: 3, w: 1, h: 6 }}
+							className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+						>
+							D
+						</div>
+						<div
+							key="e"
+							data-grid={{ x: 1, y: 4.5, w: 2, h: 6 }}
+							className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+						>
+							E
+						</div>
+						<div
+							key="f"
+							data-grid={{ x: 0, y: 10.5, w: 4, h: 1.5 }}
+							className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+						>
+							Section Title
+						</div>
+					</GridLayout>
+				</div>
+			</main>
+		</>
 	);
 };
 

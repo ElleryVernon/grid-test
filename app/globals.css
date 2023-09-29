@@ -4,19 +4,19 @@
 
 @layer base {
 	body {
-		@apply h-full antialiased bg-neutral-50 text-neutral-950;
+		@apply h-full antialiased text-neutral-950 bg-gray-50;
 	}
 }
 .react-draggable {
 	transition-property: all;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-duration: 200ms;
+	transition-duration: 350ms;
 	z-index: 50;
 }
 
 .react-draggable-dragging {
 	transition-property: box-shadow;
-	transition-duration: 200ms;
+	transition-duration: 350ms;
 	z-index: 99;
 	--tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 	--tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
@@ -25,7 +25,7 @@
 }
 
 .react-grid-placeholder {
-	background-color: #f5f5f7;
+	background-color: #f3f3f3;
 	transition-property: all;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 500ms;
