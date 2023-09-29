@@ -4,7 +4,7 @@
 
 @layer base {
 	body {
-		@apply h-full antialiased text-neutral-950 bg-gray-50;
+		@apply h-full antialiased text-neutral-950;
 	}
 }
 .react-draggable {
