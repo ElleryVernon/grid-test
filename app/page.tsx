@@ -119,7 +119,7 @@ const MyResponsiveGrid = () => {
 					<div
 						key="f"
 						data-grid={{ x: 0, y: 10.5, w: 4, h: 1.5 }}
-						className={`border-[0.5px] rounded-[20px] p-4 bg-white  border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold shadow-sm`}
+						className={`hover:border-[0.5px] rounded-[20px] p-4 bg-gray-50 hover:bg-white border-white hover:border-[#E1E1E1] cursor-pointer flex items-center justify-center text-xl font-semibold hover:shadow-sm`}
 					>
 						Section Title
 					</div>
