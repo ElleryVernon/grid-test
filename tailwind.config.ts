@@ -8,7 +8,7 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
-			screens: { desktop: "1200px" },
+			screens: { desktop: "1200px", "desktop-sm": "900px" },
 		},
 	},
 	plugins: [],
